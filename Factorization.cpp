@@ -1,28 +1,23 @@
 #include <iostream>
-#include <algorithm>
-
-#define lli long long int;
+#include <fstream>
+#define lli long long int
 using namespace std;
 
-string is_prime(int N)
-{
-    for(int i = 2; i * i <= N; i++)
-    {
-        if (N % i == 0)
-            return "no";
-    }
-    return "yes";
-    
+int print_factors_count(lli N) {
+  int cnt = 0;
+
+  for (int i = 1; i <= N; i ++)
+    if (N % i == 0)
+      cnt ++;
+
+  return cnt;
 }
 
-int main(void){
-    int T, N;
-    
-    cin >> T;
-    while (T--)
-    {
-        cin >> N;
-        cout << is_prime(N) << "\n";
-    }
-    return 0;
-}
+int main() {
+  ifstream cin("input.txt");
+
+  int N;
+  cin >> N;
+  cout << print_factors_count(N);
+  
+  return 0;
